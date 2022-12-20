@@ -4,8 +4,8 @@
  * @version 0.2.0
  * @author JustOptimize (Oggetto)
  * @authorId 347419615007080453
- * @source https://github.com/JustOptimize/return-ShowHiddenChannels
- * @updateUrl https://raw.githubusercontent.com/JustOptimize/return-ShowHiddenChannels/main/ShowHiddenChannels.plugin.js
+ * @source https://github.com/smoorc0/return-ShowHiddenChannels
+ * @updateUrl https://raw.githubusercontent.com/smoorc0/return-ShowHiddenChannels/main/ShowHiddenChannels.plugin.js
 */
 
 module.exports = (() => {
@@ -18,8 +18,8 @@ module.exports = (() => {
       }],
       description: "A plugin which displays all hidden Channels, which can't be accessed due to Role Restrictions, this won't allow you to read them (impossible).",
       version: "0.2.0",
-      github: "https://github.com/JustOptimize/return-ShowHiddenChannels",
-      github_raw: "https://raw.githubusercontent.com/JustOptimize/return-ShowHiddenChannels/main/ShowHiddenChannels.plugin.js"
+      github: "https://github.com/smoorc0/return-ShowHiddenChannels",
+      github_raw: "https://raw.githubusercontent.com/smoorc0/return-ShowHiddenChannels/main/ShowHiddenChannels.plugin.js"
     },
 
     changelog: [
@@ -63,29 +63,14 @@ module.exports = (() => {
           );
         }
         async downloadZLib() {
-          const fs = require("fs");
-          const path = require("path");
-          const ZLib = await fetch("https://rauenzi.github.io/BDPluginLibrary/release/0PluginLibrary.plugin.js");
-          if (!ZLib.ok) return this.errorDownloadZLib();
-          const ZLibContent = await ZLib.text();
-          try {
-            await fs.writeFile(
-              path.join(BdApi.Plugins.folder, "0PluginLibrary.plugin.js"),
-              ZLibContent,
-              (err) => {
-                if (err) return this.errorDownloadZLib();
-              }
-            );
-          } catch (err) {
-            return this.errorDownloadZLib();
-          }
+          return this.errorDownloadZLib();
         }
         errorDownloadZLib() {
           const { shell } = require("electron");
           BdApi.showConfirmationModal(
             "Error Downloading",
             [
-              `ZeresPluginLibrary download failed. Manually install plugin library from the link below.`,
+              `ZeresPluginLibrary is not installed, please install manually.`,
             ],
             {
               confirmText: "Download",
